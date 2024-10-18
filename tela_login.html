@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <style>
+        body{background-color: rgb(99, 193, 193);}
+        .cor-fonte{color: rgb(41, 68, 68);}
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="row justify-content-center my-4">
+            <div class="col-10 col-md-4">
+                <form action="" class="card bg-light p-4 border-primary border-2 ">
+                    <h2 class="text-center cor-fonte p-2">Tela de Login</h2>
+
+                    <label for="login" class="cor-fonte">Login</label>
+                    <input type="text" id="login" class="form-control mb-3 border-primary border-2"/>
+
+                    <label for="senha" class="cor-fonte">Senha</label>
+                    <input type="password" id="senha" class="form-control mb-2 border-primary border-2"/>
+
+                    <div class="form-check">
+                        <input class="form-check-input border-primary border-2" type="checkbox" value="" id="exibir_senha">
+                        <label class="form-check-label cor-fonte mb-3" for="exibir_senha">
+                          Exibir Senha
+                        </label>
+                    </div>
+
+                    <div class="d-grid gap-2">                      
+                        <button class="btn btn-success btn-md" id="logar"  type="button">Logar</button>                       
+                    
+                        <button class="btn btn-warning btn-md" id="limpar" type="button">Limpar</button>                        
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        //Exibe/oculta os valores digitados no campo senha
+        document.querySelector('#exibir_senha').addEventListener('click',()=>{
+            let is_checked = document.querySelector('#exibir_senha').checked
+            if(is_checked){
+                document.querySelector('#senha').setAttribute('type','text')
+            }else{
+                document.querySelector('#senha').setAttribute('type','password')
+            }            
+        })    
+
+        //Limpa os campos do formulário
+        document.querySelector('#limpar').addEventListener('click',()=>{
+            document.querySelector('#exibir_senha').checked = false
+            document.querySelector('#senha').setAttribute('type','password')
+            document.querySelector('#login').value = ''
+            document.querySelector('#senha').value = ''
+            document.querySelector('#login').focus()
+        })
+
+        //Exibe uma mensagem
+        document.querySelector('#logar').addEventListener('click',()=>{
+            let login = document.querySelector('#login').value
+            let senha = document.querySelector('#senha').value
+            if(login != ''  && senha != ''){
+                window.alert(`Login: ${login}\nSenha: ${senha}`)
+            }else{
+                window.alert(`Digite o login e/ou senha`)
+            }
+        })
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
